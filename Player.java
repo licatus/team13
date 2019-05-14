@@ -20,8 +20,9 @@ public class Player {
 		moveNum=Yut.getNumber();
 	}
 	
-	void choiceHorseToMove() {    //움직일 말 선택해서 움직이기 
+	int choiceHorseToMove() {    //움직일 말 선택해서 움직이기 
 		int x=scan.nextInt();
 		horse[x].move(moveNum);
+		return x;
 	}
 }
