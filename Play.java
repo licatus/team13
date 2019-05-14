@@ -1,0 +1,91 @@
+package 윷놀이;
+
+import java.util.*;
+
+public class Play {
+	static int[][] board=new int[42][6];
+	static Player[] person;
+	/*
+	static void selectPlayerNumber() {
+		Scanner scan=new Scanner(System.in);
+		System.out.println("플레이어 수 정하기:");
+		int x= scan.nextInt();
+		person=new Player[x+1];
+		for(int i=1;i<person.length;i++) {
+			person[i]= new Player();
+			person[i].playerNum=i;
+		}
+		scan.close();
+	}
+	static void selectHorseNumber() {
+		Scanner scan=new Scanner(System.in);
+		System.out.println("말의수  정하기:");
+		int x= scan.nextInt();
+		for(int i=1;i<person.length+1;i++) {
+			person[i].horse=new Horse[x+1];
+			for(int j=1;j<x+1;j++) {
+				person[i].horse[j]=new Horse();
+				person[i].horse[j].playerNum=i;  //말객체의 playerNum에 플레이어 숫자를 할당;
+				person[i].horse[j].horseNum=j;
+			}
+		}
+		scan.close();
+	}
+	*/
+	public static void main(String[] args) {
+		
+
+		Scanner scan=new Scanner(System.in);
+		System.out.println("플레이어 수 정하기:");
+		int x= scan.nextInt();
+		person=new Player[x+1];
+		for(int i=1;i<person.length;i++) {
+			person[i]= new Player();
+			person[i].playerNum=i;
+		}
+		System.out.println("말의수  정하기:");
+		int x1= scan.nextInt();
+		for(int i=1;i<person.length;i++) {
+			person[i].horse=new Horse[x1+1];
+			for(int j=1;j<x1+1;j++) {
+				person[i].horse[j]=new Horse();
+				person[i].horse[j].playerNum=i;  //말객체의 playerNum에 플레이어 숫자를 할당;
+				person[i].horse[j].horseNum=j;
+			}
+		}
+		//selectPlayerNumber();
+		//selectHorseNumber();
+		boolean play=true;
+		while(play) {
+			for(int i=1;i<person.length;i++) {
+				person[i].throwYut(); //i번째 플레이어 윷 던짐
+				int tmp=person[i].choiceHorseToMove();
+				if(person[i].horse[tmp].checkGrasp) {     //잡은 말이 있다면
+					for(int j=1;j<6;i++) {                //해당 말객채가 저장하고 있는 잡은 플레이어의 말들의 포지션을 0로 만든다.
+						if(person[i].horse[tmp].gtmp[j]!=0) {
+							person[person[i].horse[tmp].gtmp[0]].horse[j].position=0;
+						}
+					}
+					if(person[i].horse[tmp].override) {     // 업혀 있는 말이 있다면 업혀 있는 말들으 포지션을 움직인 말의 포지션으로 바꿔준다. 
+						for(int j=1;j<6;i++) { 
+							if(person[i].horse[tmp].atmp[j]!=0) {
+								person[i].horse[j].position=person[i].horse[tmp].position;
+							}
+						}
+					}
+					i--;
+					continue; // 잡았으니 해당 플레이어는 한번 더 던진다.
+				}
+				if(person[i].horse[tmp].override) {     // 업혀 있는 말이 있다면 업혀 있는 말들으 포지션을 움직인 말의 포지션으로 바꿔준다. 
+					for(int j=1;j<6;i++) { 
+						if(person[i].horse[tmp].atmp[j]!=0) {
+							person[i].horse[j].position=person[i].horse[tmp].position;
+						}
+					}
+				}
+				if(person[i].score==person[i].horse.length)  //해당 플레이어의 스코어가 모든 말객체와 같다면 게임 종류
+					play=false;
+			}
+		}
+	}
+}
