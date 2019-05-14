@@ -66,24 +66,10 @@ public class Play {
 							person[person[i].horse[tmp].gtmp[0]].horse[j].position=0;
 						}
 					}
-					if(person[i].horse[tmp].override) {     // 업혀 있는 말이 있다면 업혀 있는 말들으 포지션을 움직인 말의 포지션으로 바꿔준다. 
-						for(int j=1;j<6;i++) { 
-							if(person[i].horse[tmp].atmp[j]!=0) {
-								person[i].horse[j].position=person[i].horse[tmp].position;
-							}
-						}
-					}
 					i--;
 					continue; // 잡았으니 해당 플레이어는 한번 더 던진다.
 				}
-				if(person[i].horse[tmp].override) {     // 업혀 있는 말이 있다면 업혀 있는 말들으 포지션을 움직인 말의 포지션으로 바꿔준다. 
-					for(int j=1;j<6;i++) { 
-						if(person[i].horse[tmp].atmp[j]!=0) {
-							person[i].horse[j].position=person[i].horse[tmp].position;
-						}
-					}
-				}
-				if(person[i].score==person[i].horse.length)  //해당 플레이어의 스코어가 모든 말객체와 같다면 게임 종류
+				if(person[i].score==person[i].horse.length)  //해당 플레이어의 말이 다 통과했다면 게임 종류
 					play=false;
 			}
 		}

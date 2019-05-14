@@ -6,6 +6,7 @@ public class Horse {
 	int position=0; // 현재 위치
 	boolean override=false; //업혀있는지 상태
 	boolean checkGrasp=false; //움직였는데 잡았음.
+	boolean goalIn=false;
 	int[] atmp=new int[6];  //업혀있는 말 정보
 	int[] gtmp=new int[6]; //잡힌 말 정보
 	void move(int x) {	
@@ -34,6 +35,7 @@ public class Horse {
 		if(position==28 && x!=-1) {
 			position=38+x;
 		}
+		
 		position=position+x;
 		
 		if(position>30&&position<36) {
@@ -41,25 +43,34 @@ public class Horse {
 		}
 		if((position>20&&position<26)||position>41) {
 			position=100; // 골인을 의미
+			goalIn=true;
 		}
 		
-		if(board.board[position][0]!=playerNum&&board.board[position][0]!=0) grasp(); // 이동한 위치에 다른 플레이어의 말이 있는 경우 잡기 함수 호출
+		if(board.board[position][0]!=playerNum&&board.board[position][0]!=0) {
+			grasp(); // 이동한 위치에 다른 플레이어의 말이 있는 경우 잡기 함수 호출
+		}
 		else { 
 			checkGrasp=false;
 			 for(int i=1;i<6;i++) {
 						gtmp[i]=0; 
+		     }
 		}
-		if(override==true) overriding(); // 말이 업혀 있는 경우  
+		if(override==true) {
+			overriding(); // 말이 업혀 있는 경우  
+		}
+		if(goalIn==true) {
+			return;
+		}
 		
 		board.board[position][0]=playerNum;       //board의 첫번째 인덱스의 말의 해당 플레이어 번호 넣기
-		board.board[position][horseNum]=horseNum; //해당 말 번호를 board의 해당 포지션에 맞는 인덱스에 번호 넣기.
+		board.board[position][horseNum]=horseNum;  //해당 말 번호를 board의 해당 포지션에 맞는 인덱스에 번호 넣기.
 		
 	}
 	
 	void checkOverriding() {   
 		for(int i=1;i<6;i++) {   // 해당 포지션의 다른 배열에 해당하는 말번호가 존재한다면 엎혀있음. true로 바꿔줌. 
 			if(board.board[position][i]==i) {
-				atmp[i]=board.board[position][i];   //배열에 엎혀있는 말들의 번호를 저장.
+				atmp[i]=i;   //배열에 엎혀있는 말들의 번호를 저장.
 				override=true;
 			}
 			else atmp[i]=0;
