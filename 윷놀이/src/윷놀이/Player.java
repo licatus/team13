@@ -45,7 +45,8 @@ public class Player {
 					if(horse[x].atmp[i]==i) {
 						score++;
 					}
-			}
+			            }
+                                           }
 			score++; 
 		}
 		
