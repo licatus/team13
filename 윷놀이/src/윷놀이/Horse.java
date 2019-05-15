@@ -37,12 +37,14 @@ public class Horse {
 		}
 		
 		position=position+x;
+		if(position==38)    // 38포지션과 28포지션은 보드판에서 겹치는 부분. 
+			position=28;
 		
 		if(position>30&&position<36) {
+			
 			position=position-30+14;
 		}
 		if((position>20&&position<26)||position>41) {
-			position=100; // 골인을 의미
 			goalIn=true;
 		}
 		

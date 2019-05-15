@@ -60,9 +60,12 @@ public class Play {
 			for(int i=1;i<person.length;i++) {
 				System.out.println(i+"번째 플레이의 턴");
 				person[i].throwYut(); //i번째 플레이어 윷 던짐
+				if(person[i].zeroBackDo) continue;  // 백도가 나왔는데 모든 말이 출발을 안했다면 바로 다음 사람이 진행.
 				int tmp=person[i].choiceHorseToMove();
-				if(person[i].score==person[i].horse.length)  //해당 플레이어의 말이 다 통과했다면 게임 종류
+				if(person[i].score==person[i].horse.length) {  //해당 플레이어의 말이 다 통과했다면 게임 종류
 					play=false;
+					break;
+				}
 				if(person[i].horse[tmp].checkGrasp) {     //잡은 말이 있다면
 					System.out.print(person[i].horse[tmp].gtmp[0]+"번 플레이어의 ");
 					for(int j=1;j<6;j++) {                //해당 말객채가 저장하고 있는 잡은 플레이어의 말들의 포지션을 0로 만든다.
@@ -72,7 +75,7 @@ public class Play {
 						}
 					}
 					System.out.println("말을 잡았습니다. 한번더");
-					i--;
+					i--;	
 					continue; // 잡았으니 해당 플레이어는 한번 더 던진다.
 				}
 
