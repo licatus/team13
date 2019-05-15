@@ -1,4 +1,5 @@
 package 윷놀이;
+
 import java.util.*;
 public class Player {
 	int playerNum;
@@ -17,16 +18,20 @@ public class Player {
 	}
 	*/
 	void throwYut() { //윳던지기
+		System.out.println(playerNum+"번 플레이어가 윷을 던집니다.");
 		moveNum=Yut.getNumber();
+
 	}
 	
-	int choiceHorseToMove() {    //움직일 말 선택해서 움직이기 
+	int choiceHorseToMove() {    //움직일 말 선택해서 움직이기
+		
+		System.out.print("움질일 말을 선택하세요.1~"+(horse.length-1)+">");
 		int x=scan.nextInt();
 		horse[x].move(moveNum);
-		
-		int y=horse.length;
-		System.out.print(y);
+		System.out.println("현재 위치는"+horse[x].position);
 		
 		return x;
 	}
+	
+	
 }
