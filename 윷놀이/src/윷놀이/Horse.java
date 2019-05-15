@@ -10,16 +10,6 @@ public class Horse {
 	int[] atmp=new int[6];  //업혀있는 말 정보
 	int[] gtmp=new int[6]; //잡힌 말 정보
 	void move(int x) {	
-
-		/*
-		int i;                      //이전 포지션에 해당 플레이어의 다른 말이 있으면 tmp에 해당 말번호를 저장함. 
-		for(i=1;i<6;i++) {
-			if(board[position][i].playerNum==playerNum)
-				atmp[i]=i;
-		}
-		itmp=position;
-		board[position]=null;//이전 포지션을 비워둠.
-		*/
 		if(position!=0) {    	
 		board.board[position][0]=0;         //보드의 현재 말위치의 플레이어가 없음을 의미. 
 		board.board[position][horseNum]=0;  //보드의 현재 말위치의 해당 말번호를 0으로 
@@ -29,14 +19,14 @@ public class Horse {
 		if(position==5 && x!=-1) {     
 			position=25+x;
 		}
-		if(position==10 && x!=-1) {
+		else if(position==10 && x!=-1) {
 			position=35+x;
 		}
-		if(position==28 && x!=-1) {
+		else if(position==28 && x!=-1) {
 			position=38+x;
 		}
+		else position=position+x;
 		
-		position=position+x;
 		if(position==38)    // 38포지션과 28포지션은 보드판에서 겹치는 부분. 
 			position=28;
 		
@@ -61,6 +51,7 @@ public class Horse {
 			overriding(); // 말이 업혀 있는 경우  
 		}
 		if(goalIn==true) {
+			System.out.print("골인!!");
 			return;
 		}
 		

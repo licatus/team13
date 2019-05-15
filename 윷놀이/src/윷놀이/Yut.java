@@ -1,7 +1,7 @@
 package À·³îÀÌ;
 import java.util.*;
 public class Yut {
-
+	
 	static int number=0; 
 	static int getNumber() {
 		number=0;

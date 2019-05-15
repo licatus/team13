@@ -18,6 +18,23 @@ public class Player {
 		}
 	}
 	*/
+	void choiceNumber() {
+		System.out.print("-1:백도 / 1:도 / 2:개 / 3:걸/ 4:윷/ 5:모>>");
+		moveNum=scan.nextInt();
+		int count=1;
+		int i;
+		if(moveNum==-1) {                       //말들이 전부다 출발안했는데 백도가 나온다면, zeroBack를 true로
+			for(i=1;i<horse.length;i++) {
+				if(horse[i].position==0)
+					count++;
+			}
+			if(count==i)
+				zeroBackDo=true;
+		}
+		else zeroBackDo=false;
+	}
+	
+	
 	void throwYut() { //윳던지기
 		System.out.println(playerNum+"번 플레이어가 윷을 던집니다.");
 		moveNum=Yut.getNumber();
@@ -45,11 +62,11 @@ public class Player {
 					if(horse[x].atmp[i]==i) {
 						score++;
 					}
-			            }
-                                           }
+				}
+			}
 			score++; 
 		}
-		
+		else {
 		
 		System.out.print(horse[x].horseNum);
 		if(horse[x].override) {
@@ -61,8 +78,8 @@ public class Player {
 		}
 		System.out.println("말의 현재 위치는"+horse[x].position);
 		
+		}
 		return x;
 	}
-	
 	
 }

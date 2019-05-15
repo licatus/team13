@@ -58,11 +58,18 @@ public class Play {
 		boolean play=true;
 		while(play) {
 			for(int i=1;i<person.length;i++) {
-				System.out.println(i+"번째 플레이의 턴");
-				person[i].throwYut(); //i번째 플레이어 윷 던짐
+				System.out.println(i+"번째 플레이의 턴 , 1: 자동 or 2: 선택");
+				int k=scan.nextInt();
+				
+				if(k==2) { 
+					person[i].choiceNumber();
+				}
+				else {
+					person[i].throwYut(); //i번째 플레이어 윷 던짐
+				}
 				if(person[i].zeroBackDo) continue;  // 백도가 나왔는데 모든 말이 출발을 안했다면 바로 다음 사람이 진행.
 				int tmp=person[i].choiceHorseToMove();
-				if(person[i].score==person[i].horse.length) {  //해당 플레이어의 말이 다 통과했다면 게임 종류
+				if(person[i].score==(person[i].horse.length-1)) {  //해당 플레이어의 말이 다 통과했다면 게임 종류
 					play=false;
 					break;
 				}
