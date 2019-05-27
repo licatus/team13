@@ -7,6 +7,7 @@ public class Player {
 	Horse[] horse; //총 말의 수
 	int moveNum;
 	boolean zeroBackDo=false;
+	boolean yutmo=false;
 	Scanner scan=new Scanner(System.in);
 	/*
 	void selectHorseNum() {    //게임 시작 전 말의 갯수 정하기
@@ -32,6 +33,11 @@ public class Player {
 				zeroBackDo=true;
 		}
 		else zeroBackDo=false;
+
+		if(moveNum==4 ||moveNum==5 ) {
+			yutmo=true;
+		}
+		else yutmo=false;
 	}
 	
 	
@@ -49,6 +55,12 @@ public class Player {
 				zeroBackDo=true;
 		}
 		else zeroBackDo=false;
+
+
+		if(moveNum==4 ||moveNum==5 ) {
+			yutmo=true;
+		}
+		else yutmo=false;
 	}
 	
 	int choiceHorseToMove() {    //움직일 말 선택해서 움직이기

@@ -85,7 +85,11 @@ public class Play {
 					i--;	
 					continue; // 잡았으니 해당 플레이어는 한번 더 던진다.
 				}
-
+				if(person[i].yutmo) {     // 윷이나 모가 나오면 한번더 던저기.
+					System.out.println("윷이나 모가 나왔습니다. 한번더");
+					i--;	
+					continue; // 잡았으니 해당 플레이어는 한번 더 던진다.
+				}
 			}
 		}
 	}
