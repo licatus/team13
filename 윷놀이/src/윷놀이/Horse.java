@@ -9,11 +9,11 @@ public class Horse {
 	boolean goalIn=false;
 	int[] atmp=new int[6];  //업혀있는 말 정보
 	int[] gtmp=new int[6]; //잡힌 말 정보
+	String str = "";
 	void move(int x) {	
 		if(position!=0) {    	
 		board.board[position][0]=0;         //보드의 현재 말위치의 플레이어가 없음을 의미. 
 		board.board[position][horseNum]=0;  //보드의 현재 말위치의 해당 말번호를 0으로 
-		checkOverriding();   //엎혀있는 말이 있는지를 채크
 		}
 		
 		if(position==5 && x!=-1) {     
@@ -34,7 +34,7 @@ public class Horse {
 			
 			position=position-30+14;
 		}
-		if((position>20&&position<26)||position>41) {
+		if((position>21&&position<26)||position>42) {
 			goalIn=true;
 		}
 		
@@ -47,6 +47,7 @@ public class Horse {
 						gtmp[i]=0; 
 		     }
 		}
+		checkOverriding();
 		if(override==true) {
 			overriding(); // 말이 업혀 있는 경우  
 		}
@@ -91,6 +92,17 @@ public class Horse {
 				else board.board[position][i]=0;
 			}
 		}
+	 String setstr() {
+		 str = Integer.toString(horseNum);
+		 for(int q = 1; q<6; q++) {
+			 if(q == atmp[q])
+			 {
+				 str = str + Integer.toString(atmp[q]);
+			 }
+		 }
+
+		 return str;
+	 }
 }
 
 

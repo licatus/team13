@@ -4,10 +4,11 @@ import java.util.*;
 public class Player {
 	int playerNum;
 	int score=0; //통과한 말의 수
+	String sc = "";
 	Horse[] horse; //총 말의 수
 	int moveNum;
 	boolean zeroBackDo=false;
-	boolean yutmo=false;
+	boolean yutmo = false;
 	Scanner scan=new Scanner(System.in);
 	/*
 	void selectHorseNum() {    //게임 시작 전 말의 갯수 정하기
@@ -19,9 +20,8 @@ public class Player {
 		}
 	}
 	*/
-	void choiceNumber() {
-		System.out.print("-1:백도 / 1:도 / 2:개 / 3:걸/ 4:윷/ 5:모>>");
-		moveNum=scan.nextInt();
+	void choiceNumber(int num) {
+		moveNum = num;
 		int count=1;
 		int i;
 		if(moveNum==-1) {                       //말들이 전부다 출발안했는데 백도가 나온다면, zeroBack를 true로
@@ -33,7 +33,6 @@ public class Player {
 				zeroBackDo=true;
 		}
 		else zeroBackDo=false;
-
 		if(moveNum==4 ||moveNum==5 ) {
 			yutmo=true;
 		}
@@ -41,8 +40,7 @@ public class Player {
 	}
 	
 	
-	void throwYut() { //윳던지기
-		System.out.println(playerNum+"번 플레이어가 윷을 던집니다.");
+	int throwYut() { //윳던지기
 		moveNum=Yut.getNumber();
 		int count=1;
 		int i;
@@ -55,41 +53,38 @@ public class Player {
 				zeroBackDo=true;
 		}
 		else zeroBackDo=false;
-
-
 		if(moveNum==4 ||moveNum==5 ) {
 			yutmo=true;
 		}
 		else yutmo=false;
+		return moveNum;
 	}
 	
-	int choiceHorseToMove() {    //움직일 말 선택해서 움직이기
+	int choiceHorseToMove(int num) {    //움직일 말 선택해서 움직이기
 		
-		System.out.print("움질일 말을 선택하세요.1~"+(horse.length-1)+">");
-		int x=scan.nextInt();
+		int x= num;
 		horse[x].move(moveNum);
 		if(horse[x].goalIn) {
 			if(horse[x].override) {
 				for(int i=1;i<6;i++) {
 					if(horse[x].atmp[i]==i) {
 						score++;
+						sc = sc + i;
+						
 					}
 				}
 			}
 			score++; 
+			sc = sc + x;
 		}
 		else {
 		
-		System.out.print(horse[x].horseNum);
 		if(horse[x].override) {
 			for(int i=1;i<6;i++) {
 				if(horse[x].atmp[i]==i) {
-					System.out.print(" "+i);
 				}
 		    }
 		}
-		System.out.println("말의 현재 위치는"+horse[x].position);
-		
 		}
 		return x;
 	}
