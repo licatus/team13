@@ -159,18 +159,18 @@ public class BoardGui extends JFrame {
 	    	contentPane.add(jbt[i]);
 	    }
         
-        JButton btnNewButton = new JButton("랜덤");
-        btnNewButton.setBounds(520, 220, 75, 100);
-        contentPane.add(btnNewButton);
-        btnNewButton.addActionListener(new ActionListener() {
+        JButton randombtn = new JButton("랜덤");
+        randombtn.setBounds(520, 220, 75, 100);
+        contentPane.add(randombtn);
+        randombtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				state = 1;
 			}
 		});
         
-        JButton btnNewButton0 = new JButton("선택");
-        btnNewButton0.setBounds(595, 220, 75, 100);
-        contentPane.add(btnNewButton0);
+        JButton selectbtn = new JButton("선택");
+        selectbtn.setBounds(595, 220, 75, 100);
+        contentPane.add(selectbtn);
         
         logf.setFont(new Font("굴림", Font.BOLD, 18));
         logf.setBounds(520, 120, 150, 70);
@@ -199,7 +199,7 @@ public class BoardGui extends JFrame {
         logy.setBounds(520, 190, 150, 30);
         contentPane.add(logy);
         
-        btnNewButton0.addActionListener(new ActionListener() {
+        selectbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				state = 2;
 			}
