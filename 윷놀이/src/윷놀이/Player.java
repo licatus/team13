@@ -69,16 +69,12 @@ public class Player {
 				for(int i=1;i<6;i++) {
 					if(horse[x].atmp[i]==i) {
 						score++;
-						sc = sc + i;
-						
 					}
 				}
 			}
 			score++; 
-			sc = sc + x;
 		}
 		else {
-		
 		if(horse[x].override) {
 			for(int i=1;i<6;i++) {
 				if(horse[x].atmp[i]==i) {

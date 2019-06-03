@@ -17,17 +17,19 @@ public class GUI extends JFrame {
     String str1 = "1번 - ";
     JLabel logf = new JLabel("1\uBC88 - \uC737 \uB358\uC9C0\uAE30");
     JLabel logy = new JLabel("\uC737\uC744 \uB358\uC838\uC8FC\uC138\uC694");
-    JLabel lblNewLabel5 = new JLabel("");
-    JLabel lblNewLabel6 = new JLabel("");
-    JLabel lblNewLabel7 = new JLabel("");
-    JLabel lblNewLabel8 = new JLabel("");
     JLabel[] nlb = new JLabel[42];
-
+    JLabel[] psc = new JLabel[8];
+    JButton[] jbt = new JButton[5];
 
 	/**
 	 * Create the frame.
 	 */
-	public GUI() {
+	public GUI(int pn, int hn) {
+		psc[4] = new JLabel("0");
+		psc[5] = new JLabel("0");
+		psc[6] = new JLabel("0");
+	    psc[7] = new JLabel("0");
+
 	    
 		board = new ImageIcon("board.png");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -112,50 +114,50 @@ public class GUI extends JFrame {
         }
         
         
-        JButton btnNewButton1 = new JButton("1번");
-        btnNewButton1.setBounds(520, 320, 150, 40);
-        contentPane.add(btnNewButton1);
-        btnNewButton1.addActionListener(new ActionListener() {
+        jbt[0] = new JButton("1번");
+        jbt[0].setBounds(520, 320, 150, 40);
+        jbt[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				horse = 1;
 			}
 		});
         
-        JButton btnNewButton2 = new JButton("2번");
-        btnNewButton2.setBounds(520, 360, 150, 40);
-        contentPane.add(btnNewButton2);
-        btnNewButton2.addActionListener(new ActionListener() {
+        jbt[1] = new JButton("2번");
+        jbt[1].setBounds(520, 360, 150, 40);
+        jbt[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				horse = 2;
 			}
 		});
         
-        JButton btnNewButton3 = new JButton("3번");
-        btnNewButton3.setBounds(520, 400, 150, 40);
-        contentPane.add(btnNewButton3);
-        btnNewButton3.addActionListener(new ActionListener() {
+        jbt[2] = new JButton("3번");
+        jbt[2].setBounds(520, 400, 150, 40);
+        jbt[2].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				horse = 3;
 			}
 		});
         
-        JButton btnNewButton4 = new JButton("4번");
-        btnNewButton4.setBounds(520, 440, 150, 40);
-        contentPane.add(btnNewButton4);
-        btnNewButton4.addActionListener(new ActionListener() {
+        jbt[3] = new JButton("4번");
+        jbt[3].setBounds(520, 440, 150, 40);
+        jbt[3].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				horse = 4;
 			}
 		});
         
-        JButton btnNewButton5 = new JButton("5번");
-        btnNewButton5.setBounds(520, 480, 150, 40);
-        contentPane.add(btnNewButton5);
-        btnNewButton5.addActionListener(new ActionListener() {
+        jbt[4] = new JButton("5번");
+        jbt[4].setBounds(520, 480, 150, 40);
+        jbt[4].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				horse = 5;
 			}
 		});
+        
+        for(int i = 0; i<hn; i++)
+	    {
+	    	contentPane.add(jbt[i]);
+	    }
         
         JButton btnNewButton = new JButton("랜덤");
         btnNewButton.setBounds(520, 220, 75, 100);
@@ -175,33 +177,24 @@ public class GUI extends JFrame {
         
         contentPane.add(logf);
         
-        JLabel lblNewLabel1 = new JLabel("1\uBC88");
-        lblNewLabel1.setBounds(520, 10, 75, 25);
-        contentPane.add(lblNewLabel1);
+        psc[0] = new JLabel("1번");
+        psc[0].setBounds(520, 10, 75, 25);
+        psc[1] = new JLabel("2\uBC88");
+        psc[1].setBounds(520, 35, 75, 25);
+        psc[2] = new JLabel("3\uBC88");
+        psc[2].setBounds(520, 60, 75, 25);
+        psc[3] = new JLabel("4\uBC88");
+        psc[3].setBounds(520, 85, 75, 25);
+        psc[4].setBounds(595, 10, 75, 25);
+        psc[5].setBounds(595, 35, 75, 25);
+        psc[6].setBounds(595, 60, 75, 25);
+        psc[7].setBounds(595, 85, 75, 25);
         
-        JLabel lblNewLabel2 = new JLabel("2\uBC88");
-        lblNewLabel2.setBounds(520, 35, 75, 25);
-        contentPane.add(lblNewLabel2);
-        
-        JLabel lblNewLabel3 = new JLabel("3\uBC88");
-        lblNewLabel3.setBounds(520, 60, 75, 25);
-        contentPane.add(lblNewLabel3);
-        
-        JLabel lblNewLabel4 = new JLabel("4\uBC88");
-        lblNewLabel4.setBounds(520, 85, 75, 25);
-        contentPane.add(lblNewLabel4);
-        
-        lblNewLabel5.setBounds(595, 10, 75, 25);
-        contentPane.add(lblNewLabel5);
-        
-        lblNewLabel6.setBounds(595, 35, 75, 25);
-        contentPane.add(lblNewLabel6);
-        
-        lblNewLabel7.setBounds(595, 60, 75, 25);
-        contentPane.add(lblNewLabel7);
-        
-        lblNewLabel8.setBounds(595, 85, 75, 25);
-        contentPane.add(lblNewLabel8);
+	    for(int i = 0; i<pn; i++)
+	    {
+	    	contentPane.add(psc[i]);
+	    	contentPane.add(psc[i+4]);
+	    }
         
         logy.setBounds(520, 190, 150, 30);
         contentPane.add(logy);
@@ -235,7 +228,8 @@ public class GUI extends JFrame {
 	public void setlogy(String string) {
 		logy.setText(string);
 	}
-	public void setscore(int i, String score) {
+	public void setscore(int i, int sc) {
+		String score = Integer.toString(sc);
 		switch(i) {
 		case 1 : lblNewLabel5.setText(score);
 		break;
@@ -278,6 +272,7 @@ public class GUI extends JFrame {
 			switch (hn.length())
 			{
 			case 1:
+				nlb[position].setFont(new Font("굴림", Font.PLAIN, 58));
 				break;
 			case 2:
 				nlb[position].setFont(new Font("굴림", Font.PLAIN, 29));
